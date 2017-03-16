@@ -1,8 +1,4 @@
 #include "pxt.h"
-#define ROTATOR 100
-#define LEFTR 1
-#define RIGHTR 2
-#define PRESS 3
 using namespace pxt;
 typedef vector<Action> vA;
 
@@ -34,7 +30,7 @@ enum class RotationDirection{
 
 //% color=50 weight=80
 namespace RotaryEncoder {
-  uint32_t lri = 0, lbi=0;InterruptIn *ri; DigitalIn *dv, *dsw;MicroBitEvent *levt, *revt, *pevt; Timer tsb; vA leftRotate, rightRotate, pressRotate;
+  uint32_t lri = 0, lbi=0;InterruptIn *ri; DigitalIn *dv, *dsw; Timer tsb; vA leftRotate, rightRotate, pressRotate;
   /**
   * rotated.
   */
