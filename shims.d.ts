@@ -25,7 +25,7 @@ declare namespace RotaryEncoder {
     //% blockId=rotary_ky_init
     //% block="connect clk %clk|dt %dt|sw %sw"
     //% icon="\uf1ec" shim=RotaryEncoder::init
-    function init(clk: DigitalPin, dt: DigitalPin, sw: DigitalPin): void;
+    function init(clk: Pins, dt: Pins, sw: Pins): void;
 }
 
 // Auto-generated. Do not edit. Really.
