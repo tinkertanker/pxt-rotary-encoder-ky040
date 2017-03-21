@@ -1,3 +1,5 @@
+for PXT/microbit
+
 how do i rotary encoder?
 
 for using the ky040 rotary encoder PXT on the microbit
