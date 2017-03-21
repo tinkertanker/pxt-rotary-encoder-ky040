@@ -1,5 +1,6 @@
 how do i rotary encoder?
 
+for PXT on the Microbit
 
 
 known issues:
