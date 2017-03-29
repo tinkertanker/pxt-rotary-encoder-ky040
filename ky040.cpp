@@ -29,6 +29,7 @@ enum class RotationDirection{
 };
 
 //% color=50 weight=80
+//% icon="\uf01e"
 namespace RotaryEncoder {
   uint32_t lri = 0, lbi=0;InterruptIn *ri; DigitalIn *dv, *dsw; Timer tsb; vA leftRotate, rightRotate, pressRotate;
   /**
