@@ -3,6 +3,7 @@
 
 
     //% color=50 weight=80
+    //% icon="\uf01e"
 declare namespace RotaryEncoder {
 
     /**
