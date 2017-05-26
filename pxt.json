@@ -7,9 +7,9 @@
         "core": "*"
     },
     "files": [
-        "shims.d.ts",
         "enums.d.ts",
-        "ky040.cpp"
+        "ky040.cpp",
+        "ky040.ts"
     ],
     "public": true
 }

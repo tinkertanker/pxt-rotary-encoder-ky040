@@ -27,24 +27,10 @@ enum class RotationDirection{
   Left = 0,
   Right = 1
 };
-
-//% color=50 weight=80
-//% icon="\uf01e"
 namespace RotaryEncoder {
   uint32_t lri = 0, lbi=0;InterruptIn *ri; DigitalIn *dv, *dsw; Timer tsb; vA leftRotate, rightRotate, pressRotate;
-  /**
-  * rotated.
-  */
-  //% blockId=rotary_ky_rotated_left_event
-  //% block="on rotated |%dir"
   void onRotateEvent(RotationDirection dir, Action body) {if(dir == RotationDirection::Left) leftRotate.push_back(body);else rightRotate.push_back(body);}
 
-
-  /**
-  * button pressed.
-  */
-  //% blockId=rotary_ky_pressed_event
-  //% block="on button pressed"
   void onPressEvent(Action body){pressRotate.push_back(body);}
   void cA(vA runner){for(int i=0;i<runner.size();i++){runAction0(runner[i]);} }
   void onLR(){
@@ -77,14 +63,8 @@ namespace RotaryEncoder {
       onPress();
     }
   }
-  /**
-  * initialises local variablesssss
-  */
-  //% blockId=rotary_ky_init
-  //% block="connect clk %clk|dt %dt|sw %sw"
-  //% icon="\uf1ec"
   void init(Pins clk, Pins dt, Pins sw){
-    ri = new InterruptIn((PinName)clk); //wtfffffffffff
+    ri = new InterruptIn((PinName)clk);
     dv = new DigitalIn((PinName)dt);
     dsw = new DigitalIn((PinName)sw);
     create_fiber(monitorPress);
