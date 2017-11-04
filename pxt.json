@@ -11,5 +11,8 @@
         "ky040.cpp",
         "ky040.ts"
     ],
+    "testFiles": [
+        "tests.ts"
+    ],
     "public": true
 }

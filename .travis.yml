@@ -1,0 +1,34 @@
+language: python
+sudo: false
+
+node_js:
+  - "7"
+
+python:
+  - "2.7"
+
+addons:
+  apt:
+    sources:
+      - george-edison55-precise-backports
+      - sourceline: 'ppa:team-gcc-arm-embedded/ppa'
+    packages:
+      - ninja-build
+      - cmake
+      - cmake-data
+      - gcc-arm-embedded
+      - srecord
+
+install:
+  - nvm install 7
+  - pip install yotta
+  - npm install
+  - npm run pxt:init
+  - npm run pxt:install
+
+script:
+  - npm run test
+
+cache:
+  directories:
+    - node_modules
