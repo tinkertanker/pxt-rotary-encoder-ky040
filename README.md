@@ -1,14 +1,69 @@
-for PXT/microbit
+# KY040 Rotary Encoder PXT Package
 
-how do i rotary encoder?
+This is the PXT package for the KY-040 rotary encoder.
 
-for using the ky040 rotary encoder PXT on the microbit
+## Hardware Setup
+1. Connect the appropriate pins (CLK, DT, SW, GND) to the micro:bit.
 
+## PXT Blocks
+### Initialise rotary encoder
+Initialises the rotary encoder.
 
-known issues:
+Sets up the micro:bit to use the rotary encoder.
 
- - ~~button is broken~~
+```sig
+RotaryEncoder.init(P0, P1, P2)
+```
 
- - ~~there are hardcoded event and device IDs - not sure if it's possible to work around this~~
+This block must be placed before any of the other blocks in this list.
 
- - both of the above are now fixed, it uses a single fiber to monitor the button though
+### On button pressed
+Button push event.
+
+Called whenever the button is pushed down.
+
+```sig
+RotaryEncoder.onPressEvent(() => {
+    basic.showString("Button pressed!")
+})
+```
+
+### On rotate (left/right)
+Rotation event.
+
+Called whenever the encoder detects rotation.
+
+```sig
+RotaryEncoder.onRotateEvent(RotationDirection.Left, () => {
+    basic.showString("<")
+})
+
+RotaryEncoder.onRotateEvent(RotationDirection.Right, () => {
+    basic.showString(">")
+})
+```
+
+## Example: Number input
+The follow code creates a number input that can be adjusted by turning the encoder.
+
+```blocks
+RotaryEncoder.init(P0, P1, P2)
+let item = 0
+basic.showNumber(item)
+RotaryEncoder.onRotateEvent(RotationDirection.Left, () => {
+    item -= 1
+    basic.showNumber(item)
+})
+RotaryEncoder.onRotateEvent(RotationDirection.Right, () => {
+    item += 1
+    basic.showNumber(item)
+})
+RotaryEncoder.onPressEvent(() => {
+    basic.showString("selected!")
+})
+```
+
+## Supported targets
+
+ * for PXT/microbit
+ 
