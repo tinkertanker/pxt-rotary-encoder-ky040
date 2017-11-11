@@ -29,21 +29,26 @@ enum class RotationDirection{
 };
 namespace RotaryEncoder {
   uint32_t lri = 0, lbi=0;InterruptIn *ri; DigitalIn *dv, *dsw; Timer tsb; vA leftRotate, rightRotate, pressRotate;
-  void onRotateEvent(RotationDirection dir, Action body) {if(dir == RotationDirection::Left) leftRotate.push_back(body);else rightRotate.push_back(body);}
-
-  void onPressEvent(Action body){pressRotate.push_back(body);}
+  
+  //%
+  void onRotateEvent(RotationDirection dir, Action body) {
+    if(dir == RotationDirection::Left) leftRotate.push_back(body);
+    else rightRotate.push_back(body);
+  }
+  
+  //%
+  void onPressEvent(Action body){
+    pressRotate.push_back(body);
+  }
+  
   void cA(vA runner){for(int i=0;i<runner.size();i++){runAction0(runner[i]);} }
-  void onLR(){
-    cA(leftRotate);
-  }
-
-  void onRR(){
-    cA(rightRotate);
-  }
+  void onLR(){cA(leftRotate);}
+  void onRR(){cA(rightRotate);}
 
   void onPress(){
     cA(pressRotate);
   }
+  
   void onRotated(){
     uint32_t now = tsb.read_ms();
     if(now - lri < 50) return;
@@ -63,6 +68,8 @@ namespace RotaryEncoder {
       onPress();
     }
   }
+  
+  //%
   void init(Pins clk, Pins dt, Pins sw){
     ri = new InterruptIn((PinName)clk);
     dv = new DigitalIn((PinName)dt);
