@@ -14,5 +14,5 @@ RotaryEncoder.onRotateEvent(RotationDirection.Left, () => {
     item += 1
 })
 item = 0
-RotaryEncoder.init(DigitalPin.P14, DigitalPin.P15, DigitalPin.P16)
+RotaryEncoder.init(Pins.P14, Pins.P15, Pins.P16)
 basic.showNumber(0)
