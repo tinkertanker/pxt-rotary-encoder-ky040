@@ -1,11 +1,11 @@
-# KY040 Rotary Encoder PXT Package
+# KY040 Rotary Encoder MakeCode Package [![Build Status](https://travis-ci.org/Tinkertanker/pxt-ky040-microbit.svg?branch=master)](https://travis-ci.org/Tinkertanker/pxt-ky040-microbit)
 
-This is the PXT package for the KY-040 rotary encoder.
+This is the MakeCode package for the KY-040 rotary encoder.
 
 ## Hardware Setup
 1. Connect the appropriate pins (CLK, DT, SW, GND) to the micro:bit.
 
-## PXT Blocks
+## Blocks
 ### Initialise rotary encoder
 Initialises the rotary encoder.
 
