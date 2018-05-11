@@ -1,4 +1,4 @@
-# KY040 Rotary Encoder MakeCode Package [![Build Status](https://travis-ci.org/Tinkertanker/pxt-ky040-microbit.svg?branch=master)](https://travis-ci.org/Tinkertanker/pxt-ky040-microbit)
+# KY040 Rotary Encoder MakeCode Package [![Build Status](https://travis-ci.org/Tinkertanker/pxt-rotary-encoder-ky040.svg?branch=master)](https://travis-ci.org/Tinkertanker/pxt-rotary-encoder-ky040)
 
 This is the MakeCode package for the KY-040 rotary encoder.
 
