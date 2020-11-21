@@ -1,6 +1,6 @@
 {
-  "name": "pxt-ky040-microbit",
-  "version": "1.0.0",
+  "name": "pxt-rotary-encoder",
+  "version": "1.1.2",
   "dependencies": {},
   "devDependencies": {
     "pxt": "^0.3.0",
