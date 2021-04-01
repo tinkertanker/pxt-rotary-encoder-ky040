@@ -1,6 +1,6 @@
 #include "pxt.h"
+#include "mbed.h"
 using namespace pxt;
-typedef vector<Action> vA;
 
 enum class Pins{
 P0=  3,
@@ -28,22 +28,25 @@ enum class RotationDirection{
   Right = 1
 };
 namespace RotaryEncoder {
-  uint32_t lri = 0, lbi=0;InterruptIn *ri; DigitalIn *dv, *dsw; Timer tsb; vA leftRotate, rightRotate, pressRotate;
+  uint32_t lri = 0, lbi=0;InterruptIn *ri; DigitalIn *dv, *dsw; Timer tsb; Action leftRotate, rightRotate, pressRotate;
   
   //%
   void onRotateEvent(RotationDirection dir, Action body) {
-    if(dir == RotationDirection::Left) leftRotate.push_back(body);
-    else rightRotate.push_back(body);
+    //if(dir == RotationDirection::Left) leftRotate.push_back(body);
+    //else rightRotate.push_back(body);
+    if(dir == RotationDirection::Left) leftRotate = body;
+    else rightRotate = body;
   }
   
   //%
   void onPressEvent(Action body){
-    pressRotate.push_back(body);
+    //pressRotate.push_back(body);
+    pressRotate = body;
   }
   
-  void cA(vA runner){for(int i=0;i<runner.size();i++){runAction0(runner[i]);} }
-  void onLR(){cA(leftRotate);}
-  void onRR(){cA(rightRotate);}
+  //void cA(vA runner){for(int i=0;i<runner.size();i++){runAction0(runner[i]);} }
+  void onLR(){runAction0(leftRotate);}
+  void onRR(){runAction0(rightRotate);}
 
   void onPress(){
     cA(pressRotate);
@@ -58,7 +61,7 @@ namespace RotaryEncoder {
   }
 
   void monitorPress(){
-    printf("entering fiber\r\n");
+    //printf("entering fiber\r\n");
     while(1){
       uBit.sleep(50);
       if(dsw->read()) continue;
