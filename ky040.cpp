@@ -1,5 +1,6 @@
 #include "pxt.h"
 #include "mbed.h"
+typedef std::function<void()> Action;
 using namespace pxt;
 
 enum class Pins{
@@ -28,7 +29,11 @@ enum class RotationDirection{
   Right = 1
 };
 namespace RotaryEncoder {
-  uint32_t lri = 0, lbi=0;InterruptIn *ri; DigitalIn *dv, *dsw; Timer tsb; Action leftRotate, rightRotate, pressRotate;
+  uint32_t lri = 0, lbi=0;
+  InterruptIn *ri;
+  DigitalIn *dv, *dsw;
+  Timer tsb;
+  Action leftRotate, rightRotate, pressRotate;
   
   //%
   void onRotateEvent(RotationDirection dir, Action body) {
