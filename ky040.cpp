@@ -1,6 +1,7 @@
 #include "pxt.h"
 #include "mbed.h"
-typedef std::function<void()> Action;
+#include <vector>
+typedef vector<Action> vA;
 using namespace pxt;
 
 enum class Pins{
@@ -33,10 +34,10 @@ namespace RotaryEncoder {
   InterruptIn *ri;
   DigitalIn *dv, *dsw;
   Timer tsb;
-  Action leftRotate, rightRotate, pressRotate;
+  vA leftRotate, rightRotate, pressRotate;
   
   //%
-  void onRotateEvent(RotationDirection dir, Action body) {
+  void onRotateEvent(RotationDirection dir, vA body) {
     //if(dir == RotationDirection::Left) leftRotate.push_back(body);
     //else rightRotate.push_back(body);
     if(dir == RotationDirection::Left) leftRotate = body;
@@ -44,7 +45,7 @@ namespace RotaryEncoder {
   }
   
   //%
-  void onPressEvent(Action body){
+  void onPressEvent(vA body){
     //pressRotate.push_back(body);
     pressRotate = body;
   }
