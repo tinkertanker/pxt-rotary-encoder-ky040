@@ -1,7 +1,7 @@
 // Auto-generated. Do not edit.
 
 
-    declare enum Pins {
+    declare const enum Pins {
     P0 = 3,
     P1 = 2,
     P2 = 1,
@@ -23,7 +23,7 @@
     }
 
 
-    declare enum RotationDirection {
+    declare const enum RotationDirection {
     Left = 0,
     Right = 1,
     }

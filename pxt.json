@@ -15,5 +15,13 @@
     "testFiles": [
         "tests.ts"
     ],
-    "public": true
+    "public": true,
+    "targetVersions": {
+        "target": "4.0.17",
+        "targetId": "microbit"
+    },
+    "supportedTargets": [
+        "microbit"
+    ],
+    "preferredEditor": "tsprj"
 }

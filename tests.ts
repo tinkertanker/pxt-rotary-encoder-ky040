@@ -1,18 +1,24 @@
 // tests go here; this will not be compiled when this package is used as a library
 
-let item = 0
+let item = 3;
 basic.forever(() => {
-    basic.showNumber(item)
+    basic.showNumber(item);
 })
 RotaryEncoder.onPressEvent(() => {
-    item = 0
+    serial.writeString("onPress\n");
+    item = 0;
+    basic.showNumber(item);
 })
 RotaryEncoder.onRotateEvent(RotationDirection.Right, () => {
-    item += -1
+    serial.writeString("rotate right\n");
+    item = 1;
+    basic.showNumber(item);
 })
 RotaryEncoder.onRotateEvent(RotationDirection.Left, () => {
-    item += 1
+    serial.writeString("rotate left\n");
+    item = 2;
+    basic.showNumber(item);
 })
-item = 0
-RotaryEncoder.init(Pins.P0, Pins.P1, Pins.P2)
-basic.showNumber(0)
+RotaryEncoder.init(Pins.P8, Pins.P9, Pins.P11);
+serial.setBaudRate(9600);
+serial.writeString("Hello World!\n");
