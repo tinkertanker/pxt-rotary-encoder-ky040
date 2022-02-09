@@ -7,8 +7,6 @@
         "core": "*"
     },
     "files": [
-        "enums.d.ts",
-        "ky040.cpp",
         "ky040.ts",
         "README.md"
     ],
