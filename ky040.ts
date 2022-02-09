@@ -1,13 +1,7 @@
-let lri = 0, lbi = 0, tsb = 0;
-let leftRotate: Action;
-let rightRotate: Action;
-let pressRotate: Action;
 let ri: DigitalPin;
 let dv: DigitalPin;
 let dsw: DigitalPin;
 let lastPressed = 1;
-let lastRI = 1;
-let lastDV = 1;
 let pressedID = 5600;
 let rotatedLeftID = 5601;
 let rotatedRightID = 5602;
@@ -65,8 +59,6 @@ namespace RotaryEncoder {
         control.inBackground(() => {
             while (true) {
                 const pressed = pins.digitalReadPin(dsw);
-                //serial.writeValue("pressed", pressed);
-                //serial.writeValue("lastPressed", lastPressed);
                 if (pressed != lastPressed) {
                     lastPressed = pressed;
                     if (pressed == 0) control.raiseEvent(pressedID, 0);
@@ -74,19 +66,6 @@ namespace RotaryEncoder {
                 basic.pause(50);
             }
         })
-        /*
-        while (true) {
-            serial.writeNumber(pins.digitalReadPin(dsw));
-            serial.writeLine("");
-            basic.pause(50);
-            if (pins.digitalReadPin(dsw) == 1) continue;
-            let now = input.runningTime();
-            if (now - lbi < 50) continue;
-            lbi = now;
-            control.raiseEvent(5600, 0);
-            //onPress();
-        }
-        */
     }
 
     /**
@@ -96,31 +75,8 @@ namespace RotaryEncoder {
     //% block="connect clk %clk|dt %dt|sw %sw"
     //% icon="\uf1ec"
     export function init(clk: DigitalPin, dt: DigitalPin, sw: DigitalPin): void {
-        serial.setBaudRate(115200);
-        serial.writeString("Initialising...");
-        serial.writeLine("");
         ri = clk;
         dv = dt;
         dsw = sw;
-    }
-
-    function monitorPress() {
-        /*
-        while (true) {
-            serial.writeNumber(pins.digitalReadPin(dsw));
-            serial.writeLine("");
-            basic.pause(50);
-            if (pins.digitalReadPin(dsw) == 1) continue;
-            let now = input.runningTime();
-            if (now - lbi < 50) continue;
-            lbi = now;
-            onPress();
-        }
-        */
-    }
-
-    function onPress() {
-        serial.writeString("Pressed!\n");
-        pressRotate;
     }
 }
