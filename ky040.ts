@@ -55,6 +55,7 @@ namespace RotaryEncoder {
     //% blockId=rotary_ky_pressed_event
     //% block="on button pressed"
     export function onPressEvent(body: () => void): void {
+        pins.setPull(dsw, PinPullMode.PullUp)
         control.onEvent(pressedID, 0, body);
         control.inBackground(() => {
             while (true) {
